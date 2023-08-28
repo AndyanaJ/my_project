@@ -1,4 +1,4 @@
-name: Flask App Workflow
+name: project App Workflow
 
 on:
   push:
@@ -22,19 +22,19 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install Flask
-      working-directory: .  # Adjust if your app code is in a subdirectory
+      working-directory: . 
 
     - name: Run Tests
       run: |
         python -m unittest discover -v
-      working-directory: .  # Adjust if your tests are in a subdirectory
+      working-directory: . 
 
     - name: Build Docker Image
       run: |
         docker build -t my-flask-app .
-      working-directory: .  # Adjust to the directory containing your Dockerfile
+      working-directory: .  
 
     - name: Check Docker Image
       run: |
         docker images
-      working-directory: .  # Adjust to the directory containing your Dockerfile
+      working-directory: .  
