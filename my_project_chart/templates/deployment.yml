@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  labels:
+    app.kubernetes.io/name: my-project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: my-project
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: my-project
+    spec:
+      containers:
+        - name: app
+          image: "andyanaj/my_projectimage"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
